@@ -1,0 +1,42 @@
+`timescale 1ns/1ps
+
+module k_mcp_send_t1 (data_out, en, ready, data_in, send, ack, clk, rst_n);
+    output logic [7:0] data_out;
+    output logic en;
+    output logic ready;
+    input logic [7:0] data_in;
+    input logic send;
+    input logic ack;
+    input logic clk, rst_n;
+
+    logic ack_net, ready_net, nxt_data;
+
+    // instantiate pulse generator
+    k_PulseGen_t1   pulsegen (.pulse(ack_net),
+                              .q(),
+                              .d(ack),
+                              .clk(clk),
+                              .rst_n(rst_n));
+
+    // instantiate send block fsm
+    k_FSM_send_t1   fsm (.ready(ready_net),
+                         .send(send),
+                         .ack(ack_net),
+                         .clk(clk),
+                         .rst_n(rst_n));
+
+    // next data word logic
+    assign nxt_data = ready_net & send;
+
+    assign ready = ready_net;
+
+    // Main block
+    always @ (posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            en <= '0;
+            data_out <= '0;
+        else if (nxt_data)
+            en <= ~en;
+            data_out <= data_in;
+    end
+endmodule
