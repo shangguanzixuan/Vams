@@ -87,7 +87,14 @@ Index:
 		-> Digital to Analog connect module for 0,1,X,Z states
 		-> Bidirectional connect module for 0,1,X,Z states
 		-> Enhanced Bidirectional connect module for 0,1,X,Z states
-		->
+		-> 2 FF Synchronizer
+		-> 3 FF Synchronizer
+		-> Pulse Generator
+		-> Sending clock domain FSM
+		-> Receiving clock domain FSM
+		-> Sending clock domain MCP logic
+		-> Receiving clock domain MCP logic
+		-> MCP formulation of CDC signals
 		
 (VI). Frequency - Folder contains frequency based models
 		-> Phase Frequency Detector
