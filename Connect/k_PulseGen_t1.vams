@@ -1,0 +1,15 @@
+`timescale 1ns/1ps
+
+module k_PulseGen_t1 (pulse, q, d, clk, rst_n);
+    output logic pulse, q;
+    input logic d, clk, rst_n;
+
+    always @ (posedge clk or negedge rst_n)
+    begin
+        if (!rst_n)
+            q <= '0;
+        else
+            q <= d;
+    end
+    assign pulse = q ^ d;
+endmodule
