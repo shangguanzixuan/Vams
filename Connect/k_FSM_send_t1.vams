@@ -1,0 +1,37 @@
+`timescale 1ns/1ps
+
+module k_FSM_send_t1 (ready, send, ack, clk, rst_n);
+    output logic ready;
+    input logic send;
+    input logic ack;
+    input logic clk, rst_n;
+
+    parameter size = 1;
+    parameter BUSY = 1'b0;
+    parameter READY = 1'b1;
+
+    reg[size-1:0] state;
+    wire[size-1:0] nxt_state;
+
+    always @(send or ack) begin
+        case (state)
+            READY: if (send)
+                      nxt_state = BUSY;
+                   else
+                      nxt_state = READY;
+            BUSY: if (ack)
+                      nxt_state = READY;
+                   else
+                      nxt_state = BUSY;
+        endcase
+    end
+
+    always @( posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            state <= READY;
+        else
+            state <= nxt_state;
+    end
+
+    assign ready = state;
+endmodule
