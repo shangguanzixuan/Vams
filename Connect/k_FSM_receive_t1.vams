@@ -1,0 +1,37 @@
+`timescale 1ns/1ps
+
+module k_FSM_receive_t1 (valid, load, en, clk, rst_n);
+    output logic valid;
+    input logic load;
+    input logic en;
+    input logic clk, rst_n;
+
+    parameter size = 1;
+    parameter BUSY = 1'b0;
+    parameter READY = 1'b1;
+
+    reg[size-1:0] state;
+    wire[size-1:0] nxt_state;
+
+    always @(load or en) begin
+        case (state)
+            READY: if (load)
+                      nxt_state = BUSY;
+                   else
+                      nxt_state = READY;
+            BUSY: if (en)
+                      nxt_state = READY;
+                   else
+                      nxt_state = BUSY;
+        endcase
+    end
+
+    always @( posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            state <= BUSY;
+        else
+            state <= nxt_state;
+    end
+
+    assign valid = state;
+endmodule
