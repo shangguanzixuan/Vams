@@ -1,0 +1,14 @@
+`timescale 1ns/1ps
+
+modue k_g2b_converter_t1 #(parameter size = 4)(
+    output logic [size-1:0] bin,
+    input logic [size-1:0] gray);
+
+    integer ii = 0;
+
+    always begin
+        for (ii=0; ii<size; ii=ii+1) begin
+            bin[ii] = ^(gray>>ii);
+        end
+    end
+endmodule
