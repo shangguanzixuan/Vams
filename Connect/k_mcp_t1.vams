@@ -1,0 +1,50 @@
+`timescale 1ns/1ps
+
+module k_mcp_t1 (
+    output logic [7:0] bdata,
+    output logic bvalid,
+    input logic bload,
+    input logic bclk, brst_n,
+    output logic aready,
+    input logic [7:0] adata_in,
+    input logic asend,
+    input logic aclk, arst_n);
+
+    logic [7:0] adata;
+    logic a_en;
+    logic b_ack;
+    logic bq2_en;
+    logic aq2_ack;
+
+    // Instantiate receiving block synchronizer
+    k_Sync2_t1  bsync (.q(bq2_en),
+                       .d(a_en),
+                       .clk(bclk),
+                       .rst_n(brst_n));
+
+   // Instantiate sending block synchronizer
+   k_Sync2_t1  async (.q(aq2_ack),
+                      .d(b_ack),
+                      .clk(aclk),
+                      .rst_n(arst_n));
+
+  // Instantiate send block logic
+  k_mcp_send_t1   alogic (.data_out(adata),
+                          .en(a_en),
+                          .ready(aready),
+                          .data_in(adata_in),
+                          .send(asend),
+                          .ack(aq2_ack),
+                          .clk(aclk),
+                          .rst_n(arst_n));
+
+  // Instantiate receive block logic
+  k_mcp_receive_t1    blogic (.data_out(bdata),
+                              .valid(bvalid),
+                              .ack(b_ack),
+                              .data_in(adata),
+                              .load(bload),
+                              .en(bq2_en),
+                              .clk(bclk),
+                              .rst_n(brst_n));
+endmodule
