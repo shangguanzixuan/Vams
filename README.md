@@ -95,6 +95,11 @@ Index:
 		-> Sending clock domain MCP logic
 		-> Receiving clock domain MCP logic
 		-> MCP formulation of CDC signals
+		-> Binary to Gray code converter
+		-> Gray to Binary code converter
+		->
+		->
+		->
 		
 (VI). Frequency - Folder contains frequency based models
 		-> Phase Frequency Detector
