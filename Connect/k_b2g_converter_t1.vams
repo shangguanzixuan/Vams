@@ -1,0 +1,8 @@
+`timescale 1ns/1ps
+
+modue k_b2g_converter_t1 #(parameter size = 4)(
+    output logic [size-1:0] gray,
+    input logic [size-1:0] bin);
+
+    assign gray = (bin>>1) ^ bin;
+endmodule
