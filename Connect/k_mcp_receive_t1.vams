@@ -1,0 +1,42 @@
+`timescale 1ns/1ps
+
+module k_mcp_receive_t1 (data_out, valid, ack, data_in, load, en, clk, rst_n);
+    output logic [7:0] data_out;
+    output logic valid;
+    output logic ack;
+    input logic [7:0] data_in;
+    input logic load;
+    input logic en;
+    input logic clk, rst_n;
+
+    wire pulse, valid_net, load_data;
+
+    // instantiating pulse generator
+    k_PulseGen_t1   pulsegen (.pulse(pulse),
+                              .q(),
+                              .d(en),
+                              .clk(clk),
+                              .rst_n(rst_n));
+
+    // instantiating receiving domain fsm
+    k_FSM_receive_t1  fsm (.valid(valid_net),
+                           .load(load),
+                           .en(pulse),
+                           .clk(clk),
+                           .rst_n(rst_n));
+
+    // Load next data word
+    assign load_data = valid_net & load;
+
+    assign valid = valid_net;
+
+    // Main control block
+    always @ (posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            ack <= '0;
+            data_out <= '0;
+        else if (load_data)
+            ack <= ~ack;
+            data_out <= data_in;
+    end
+endmodule
