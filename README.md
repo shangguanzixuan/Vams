@@ -97,7 +97,7 @@ Index:
 		-> MCP formulation of CDC signals
 		-> Binary to Gray code converter
 		-> Gray to Binary code converter
-		->
+		-> Gray Code Counters
 		->
 		->
 		
