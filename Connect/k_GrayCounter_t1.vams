@@ -1,0 +1,28 @@
+`timescale 1ns/1ps
+
+module k_GrayCounter_t1 #(parameter size = 5)(
+    output logic [size-1:0] gray,
+    input logic clk, inc, en, rst_n);
+
+    logic [size-1:0] bin, bnxt, gnxt, gray_net;
+    integer ii = 0;
+
+    always @ (posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            gray_net <= '0;
+        else
+            gray_net <= gnxt;
+    end
+
+    // instantiate gray to binary code converter
+    k_g2b_converter_t1 #(.size(size)) g2b (.bin(bin),
+                                           .gray(gray_net));
+
+    assign bnxt = en ? bin + inc : bin;
+
+    // instantiate binary to gray code converter
+    k_b2g_converter_t1 #(.size(size)) b2g (.gray(gnxt),
+                                           .bin(bnxt));
+
+    assign gray = gray_net;
+endmodule
