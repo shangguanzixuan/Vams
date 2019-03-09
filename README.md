@@ -80,7 +80,7 @@ Index:
 		-> n bit Quantizer
 		-> n bit DAC, AMS model
 		-> n bit ADC, AMS model
-		
+
 (V). Connect - Folder contains connect modules
 		-> Electrical to Logic connect module just for 0,1 states
 		-> Electrical to Logic connect module for 0,1,X,Z states
@@ -100,7 +100,7 @@ Index:
 		-> Gray Code Counters
 		->
 		->
-		
+
 (VI). Frequency - Folder contains frequency based models
 		-> Phase Frequency Detector
 		-> Noisy Phase Frequency Detector
@@ -108,8 +108,8 @@ Index:
 		-> Noisy Frequency Divider with Accumulating white jitter
 		-> Noisy Frequency Divider with Accumulating and Synchronous white jitter
 		-> Divide by N Noisy Frequency Divider with Accumulating and Synchronous white jitter
-		-> 
-		
+		->
+
 (VII). Oscillator - Folder contains oscillator modules
 		-> Voltage Controlled Oscillator
 		-> Voltage Controlled Oscillator, AMS model
@@ -119,8 +119,8 @@ Index:
 		-> Noisy Sinusoidal Wave Voltage Controlled Oscillator
 		-> Fixed Frequency Oscillator
 		-> Noisy Fixed Frequency Oscillator with accumulating white jitter
-		-> 
-		
+		->
+
 (VIII). Modulator - Folder contains modulator modules
 		-> Amplitude Modulator
 		-> Phase Modulator
@@ -128,7 +128,7 @@ Index:
 		-> 16 Quadrature Amplitude Modulator
 		->
 		->
-		
+
 (IX). Semiconductor - Folder contains semiconductor modules
 		-> Simple Junction Diode
 		->
@@ -140,12 +140,12 @@ Index:
 		->
 		->
 		->
-		
+
 (X). FIFO - Folder contains FIFO related modules
-		-> 
-		->
-		->
-		->
+		-> FIFO Synchronizer Write Control
+		-> FIFO Synchronizer Read Control
+		-> Dual Port 2 deep RAM
+		-> 1 Deep 2 Register FIFO Synchronizer
 		->
 		->
 		->
@@ -164,5 +164,3 @@ Index:
 		-> nxn Comparator
 		->
 		->
-		
-
