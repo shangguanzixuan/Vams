@@ -141,7 +141,15 @@ Index:
 		->
 		->
 		
-(X). Other - Folder contains other modules
+(X). FIFO - Folder contains FIFO related modules
+		-> 
+		->
+		->
+		->
+		->
+		->
+		->
+(XI). Other - Folder contains other modules
 		-> Period Meter
 		-> Time Interval Meter
 		-> Delay Meter
