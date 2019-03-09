@@ -2,7 +2,7 @@
 
 module k_GrayCounter_t2 #(parameter size = 5)(
     output logic [size-1:0] gray,
-    input logic clk, inc, en, rst_n);
+    input logic clk, inc, ready, rst_n);
 
     logic [size-1:0] bin, bnxt, gnxt;
     integer ii = 0;
@@ -16,7 +16,7 @@ module k_GrayCounter_t2 #(parameter size = 5)(
             bin <= bnxt;
     end
 
-    assign bnxt = en ? bin + inc : bin;
+    assign bnxt = ready ? bin + inc : bin;
 
     // instantiate binary to gray code converter
     k_b2g_converter_t1 #(.size(size)) b2g (.gray(gnxt),
