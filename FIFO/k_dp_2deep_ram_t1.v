@@ -3,7 +3,7 @@
 module k_dp_2deep_ram_t1 (q, d, wen, waddr, raddr, clk);
     parameter data_size = 8;
     parameter addr_size = 2;
-    output reg [data_size-1:0] q;
+    output wire [data_size-1:0] q;
     input wire [data_size-1:0] d;
     input wire wen, waddr, raddr, clk;
 
