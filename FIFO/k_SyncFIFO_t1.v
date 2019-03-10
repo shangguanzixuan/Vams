@@ -56,7 +56,7 @@ module k_SyncFIFO_t1 (
                      .rget(rget),
                      .rq2_wptr(rq2_wptr),
                      .rclk(rclk),
-                     .rrst_n(.rrst_n));
+                     .rrst_n(rrst_n));
 
   // Dual Port 2 deep RAM Instantiation
   k_dp_2deep_ram_t1   dpram   (.q(rdata),
