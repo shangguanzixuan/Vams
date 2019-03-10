@@ -5,6 +5,8 @@ module k_rctl_t1(
   input rget, rq2_wptr,
   input rclk, rrst_n);
 
+  reg rrdy, rptr;
+
   wire ren;
 
   always @ (posedge rclk or negedge rrst_n) begin
