@@ -12,19 +12,16 @@ module k_SyncFIFO_t1 (
   parameter data_size = 8;
 
   // Write Clock Domain Interface
-  output wrdy;
-  input [data_size-1:0] wdata;
-  input wput;
-  input wclk, wrst_n;
+  output wire wrdy;
+  input wire [data_size-1:0] wdata;
+  input wire wput;
+  input wire wclk, wrst_n;
 
   // Read Clock Domain Interface
-  output [data_size-1:0] rdata;
-  output rrdy;
-  input rget;
-  input rclk, rrst_n;
-
-  reg wrdy, rrdy;
-  reg [data_size-1:0] rdata;
+  output reg [data_size-1:0] rdata;
+  output wire rrdy;
+  input wire rget;
+  input wire rclk, rrst_n;
 
   // Write Clock Domain inner nets
   wire wen, wptr, wq2_rptr;
