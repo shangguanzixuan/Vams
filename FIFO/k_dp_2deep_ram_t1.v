@@ -13,7 +13,7 @@ module k_dp_2deep_ram_t1 (q, d, wen, waddr, raddr, clk);
     always @ (posedge clk) begin
         if (wen)
             mem[waddr] <= d;
-    end
-
-    assign q = mem[raddr];
+        else
+            q <= mem[raddr];
+        end
 endmodule
