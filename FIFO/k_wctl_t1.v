@@ -5,6 +5,8 @@ module k_wctl_t1(
   input wput, wq2_rptr,
   input wclk, wrst_n);
 
+  reg wrdy, wptr, wen;
+
   always @ (posedge wclk or negedge wrst_n) begin
       if (!wrst_n)
           wptr <= 1'b0;
