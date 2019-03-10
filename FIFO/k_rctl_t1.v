@@ -9,7 +9,7 @@ module k_rctl_t1(
 
   always @ (posedge rclk or negedge rrst_n) begin
       if (!rrst_n)
-          rptr <= '0;
+          rptr <= 1'b0;
       else
           rptr <= rptr ^ ren;
   end
