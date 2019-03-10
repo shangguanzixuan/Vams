@@ -1,11 +1,11 @@
 `timescale 1ns/1ps
 
 module k_rctl_t1(
-  output logic rrdy, rptr,
-  input logic rget, rq2_wptr,
-  input logic rclk, rrst_n);
+  output reg rrdy, rptr,
+  input wire rget, rq2_wptr,
+  input wire rclk, rrst_n);
 
-  logic ren;
+  wire ren;
 
   always @ (posedge rclk or negedge rrst_n) begin
       if (!rrst_n)
