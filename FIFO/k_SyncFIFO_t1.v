@@ -23,6 +23,9 @@ module k_SyncFIFO_t1 (
   input rget;
   input rclk, rrst_n;
 
+  reg wrdy, rrdy;
+  reg [data_size-1:0] rdata;
+
   // Write Clock Domain inner nets
   wire wen, wptr, wq2_rptr;
 
