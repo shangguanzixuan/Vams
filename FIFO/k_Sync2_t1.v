@@ -2,7 +2,7 @@
 
 module k_Sync2_t1 (q, d, clk, rst_n);
     output reg q;
-    input wire d, clk, rst_n;
+    input d, clk, rst_n;
 
     reg q1;
 
