@@ -1,8 +1,8 @@
 `timescale 1ns/1ps
 
 module k_Sync2_t1 (q, d, clk, rst_n);
-    output reg q;
-    input wire d, clk. rst_n;
+    output q;
+    input d, clk. rst_n;
 
     wire q1;
 
