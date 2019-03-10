@@ -7,7 +7,7 @@ module k_wctl_t1(
 
   always @ (posedge wclk or negedge wrst_n) begin
       if (!wrst_n)
-          wptr <= '0;
+          wptr <= 1'b0;
       else
           wptr <= wptr ^ wen;
   end
