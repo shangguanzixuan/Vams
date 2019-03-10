@@ -1,10 +1,10 @@
 `timescale 1ns/1ps
 
 module k_rctl_t1(
-  output wire rrdy,
+  output rrdy,
   output reg rptr,
-  input wire rget, rq2_wptr,
-  input wire rclk, rrst_n);
+  input rget, rq2_wptr,
+  input rclk, rrst_n);
 
   wire ren;
 
