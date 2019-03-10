@@ -1,10 +1,9 @@
 `timescale 1ns/1ps
 
 module k_Sync2_t1 (q, d, clk, rst_n);
-    output q;
-    input d, clk, rst_n;
-
     reg q;
+    wire d, clk, rst_n;
+
     reg q1;
 
     always @ (posedge clk or negedge rst_n)
