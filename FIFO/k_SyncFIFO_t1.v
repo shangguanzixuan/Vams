@@ -12,22 +12,22 @@ module k_SyncFIFO_t1 (
   parameter data_size = 8;
 
   // Write Clock Domain Interface
-  output logic wrdy;
-  input logic [data_size-1:0] wdata;
-  input logic wput;
-  input logic wclk, wrst_n;
+  output reg wrdy;
+  input wire [data_size-1:0] wdata;
+  input wire wput;
+  input wire wclk, wrst_n;
 
   // Read Clock Domain Interface
-  output logic [data_size-1:0] rdata;
-  output logic rrdy;
-  input logic rget;
-  input logic rclk, rrst_n;
+  output reg [data_size-1:0] rdata;
+  output reg rrdy;
+  input wire rget;
+  input wire rclk, rrst_n;
 
   // Write Clock Domain inner nets
-  logic wen, wptr, wq2_rptr;
+  wire wen, wptr, wq2_rptr;
 
   // Read Clock Domain inner nets
-  logic rptr, rq2_wptr;
+  wire rptr, rq2_wptr;
 
   // Write Clock 2 FF Synchronizer Instantiation
   k_Sync2_t1    r2w_sync  (.q(wq2_rptr),
