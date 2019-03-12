@@ -3,7 +3,7 @@
 module k_dp_2deep_ram_t1 (q, d, wen, waddr, raddr, clk);
     parameter data_size = 8;
     parameter addr_size = 1;
-    localparam  len = 2*addr_size;
+    localparam  len = 1<<addr_size;
     output [data_size-1:0] q;
     input [data_size-1:0] d;
     input wen;
