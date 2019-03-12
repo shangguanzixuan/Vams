@@ -2,7 +2,7 @@ module k_ptr_t1 (ptr, addr, inc, rdy, clk, rst_n);
   parameter addr_size = 4;
   output [addr_size:0] ptr;
   output [addr_size-1:0] addr;
-  input inc, rdy_n;
+  input inc, rdy;
   input clk, rst_n;
 
   reg [addr_size:0] bin, net_ptr;
