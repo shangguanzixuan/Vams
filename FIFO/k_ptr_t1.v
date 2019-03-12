@@ -5,8 +5,8 @@ module k_ptr_t1 (ptr, addr, inc, rdy, clk, rst_n);
   input inc, rdy_n;
   input clk, rst_n;
 
-  reg [addr_size-1:0] bin, net_ptr;
-  wire [addr_size-1:0] bnxt, gnxt;
+  reg [addr_size:0] bin, net_ptr;
+  wire [addr_size:0] bnxt, gnxt;
 
   always @ (posedge clk or negedge rst_n) begin
       if (!rst_n) begin
