@@ -5,7 +5,8 @@ module k_Dual_GrayCounter_t2 (gray1, addr, inc, ready, clk, rst_n);
   input inc, ready;
   input clk, rst_n;
 
-  wire [data_size-1:0] bin, bnxt, gnxt, ptr;
+  reg [data_size-1:0] bin, ptr;
+  wire [data_size-1:0] bnxt, gnxt;
 
   always @ (posedge clk or negedge rst_n) begin
       if (!rst_n) begin
