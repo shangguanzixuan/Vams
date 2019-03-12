@@ -98,7 +98,7 @@ Index:
 		-> Binary to Gray code converter
 		-> Gray to Binary code converter
 		-> Gray Code Counters
-		->
+		-> Dual Gray Code Counters
 		->
 
 (VI). Frequency - Folder contains frequency based models
@@ -146,7 +146,7 @@ Index:
 		-> FIFO Synchronizer Read Control
 		-> Dual Port 2 deep RAM
 		-> 1 Deep 2 Register FIFO Synchronizer
-		->
+		-> Asynchronous FIFO Behavioral Module
 		->
 		->
 (XI). Other - Folder contains other modules
