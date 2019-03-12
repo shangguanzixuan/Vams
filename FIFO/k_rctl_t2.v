@@ -1,21 +1,30 @@
 module k_rctl_t2 (rempty, raddr, rptr, rq2_wptr, rget, rclk, rrst_n);
   parameter addr_size = 4;
-  output reg rempty;
+  output rempty;
   output [addr_size-1:0] raddr;
-  output reg [addr_size:0] rptr;
+  output [addr_size:0] rptr;
   input [addr_size:0] rq2_wptr;
   input rget;
   input rclk, rrst_n;
 
-  wire ren;
+  reg net_rempty;
+  reg [addr_size:0] net_rptr;
+  
+  // Instantiate read pointer and address logic
+  k_ptr_t1 #(.addr_size(addr_size)) k_ptr_t1 (.ptr(net_rptr),
+                                              .addr(raddr),
+                                              .inc(rget),
+                                              .rdy(net_rempty),
+                                              .clk(rclk),
+                                              .rst_n(rrst_n));
 
-  always @ (posedge rclk or negedge rrst_n) begin
-      if (!rrst_n)
-          rptr <= 1'b0;
-      else
-          rptr <= rptr ^ ren;
-  end
+  // Instantiate empty flag logic
+  k_rempty_t1 #(.addr_size(addr_size)) k_rempty_t1 (.rempty(net_rempty),
+                                                    .rptr(net_rptr),
+                                                    .rq2_wptr(rq2_wptr),
+                                                    .rclk(rclk),
+                                                    .rrst_n(rrst_n));
 
-  assign rrdy = rptr ^ rq2_wptr;
-  assign ren = rget & rrdy;
+  assign rptr = net_rptr;
+  assign rempty = net_rempty;
 endmodule
