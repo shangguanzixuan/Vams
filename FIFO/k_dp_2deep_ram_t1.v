@@ -6,7 +6,9 @@ module k_dp_2deep_ram_t1 (q, d, wen, waddr, raddr, clk);
     localparam  len = 2*addr_size;
     output [data_size-1:0] q;
     input [data_size-1:0] d;
-    input wen, waddr, raddr, clk;
+    input wen;
+    input [addr_size-1:0] waddr, raddr;
+    input clk;
 
     reg [data_size-1:0] mem [0:len-1];
 
