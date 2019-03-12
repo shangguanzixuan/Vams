@@ -1,10 +1,10 @@
-module k_wctl_t2 (wfull, waddr, wptr, wq2_rptr, wrdy, wclk, wrst_n);
+module k_wctl_t2 (wfull, waddr, wptr, wq2_rptr, wput, wclk, wrst_n);
   parameter addr_size = 4;
   output wfull;
   output [addr_size-1:0] waddr;
   output [addr_size:0] wptr;
   input [addr_size:0] wq2_rptr;
-  input wrdy;
+  input wput;
   input wclk, wrst_n;
 
   reg net_wfull;
@@ -14,7 +14,7 @@ module k_wctl_t2 (wfull, waddr, wptr, wq2_rptr, wrdy, wclk, wrst_n);
   k_ptr_t1 #(.addr_size(addr_size)) k_ptr_t1 (.ptr(net_wptr),
                                               .addr(waddr),
                                               .inc(wput),
-                                              .rdy(wrdy),
+                                              .rdy(net_wfull),
                                               .clk(wclk),
                                               .rst_n(wrst_n));
 
