@@ -1,4 +1,4 @@
-module k_asyncFIFO_beh_t1 (
+module k_asyncFIFO_syn_t1 (
   // Outputs
   rdata, rempty, wfull,
   // Inputs
